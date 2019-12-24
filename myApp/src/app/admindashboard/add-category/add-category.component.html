@@ -1,0 +1,22 @@
+<div class="card">
+    <div class="card-header">
+     Add Category
+    </div>
+    <div class="card-body">
+     
+  <div class="form-group">
+    <label>Category <span style="color: red;">*</span></label>
+    <div class="input-group">
+      <input id="categoriy" type="text" class="form-control" placeholder="Add Category" [(ngModel)]="category" >
+
+    </div>
+    
+  </div>
+      <a  class="btn btn-primary" (click)="addCategory()">Submit</a>
+    </div>
+    <div class="card-footer" >
+      <span [innerHTML]="errormsg | safeHtml">
+
+      </span>
+    </div>
+  </div>

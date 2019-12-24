@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let brand of brands">
+      <th scope="row">{{brand.brand_id}}</th>
+      <td>
+        <input type="text"   class="form-control" [attr.disabled]="brand.brand_id!=Id ? true : null" [(ngModel)]="brand.brand">
+      </td>
+      <td>
+        <input type="button" [hidden]="brand.brand_id==Id" (click)="editBrand(brand.brand_id)" value="Edit">
+        <input type="button" [hidden]="brand.brand_id!=Id" (click)="cancelEdit()" value="Cancel">
+        <input type="button" [hidden]="brand.brand_id!=Id" (click)="updateBrand(brand)" value="Update">
+      </td>
+      <td><input type="button" style="color: red;" (click)="removeBrand(brand.brand_id)" value="X"></td>
+    </tr>
+  </tbody>
+</table>

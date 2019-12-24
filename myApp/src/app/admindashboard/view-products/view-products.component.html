@@ -1,0 +1,28 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col"> </th>
+        <th scope="col"> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <th scope="row">{{product.prduct_id}}</th>
+        <td>
+          <input type="text"   class="form-control" [attr.disabled]="product.prduct_id != Id ? true : null" [(ngModel)]="product.product">
+        </td>
+        <td>
+          <input type="text"   class="form-control" [attr.disabled]="product.prduct_id != Id ? true : null" [(ngModel)]="product.quantity">
+        </td>
+        <td>
+          <input type="button" [hidden]="product.prduct_id==Id" (click)="editProduct(product.prduct_id)" value="Edit">
+          <input type="button" [hidden]="product.prduct_id!=Id" (click)="cancelEdit()" value="Cancel">
+          <input type="button" [hidden]="product.prduct_id!=Id" (click)="updateProduct(product)" value="Update">
+        </td>
+        <td><input type="button" style="color: red;" (click)="removeProduct(product.prduct_id)" value="X"></td>
+      </tr>
+    </tbody>
+</table>

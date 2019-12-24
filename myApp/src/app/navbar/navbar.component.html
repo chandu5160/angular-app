@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: lightseagreen;">
+  <a class="navbar-brand" >
+    <img src="../../assets/images/logo.png" alt="logo">
+  </a>
+  <button class="navbar-toggler" (click)="toggleNavbar()" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="input-group">
+    <input class="form-control border-secondary py-2" type="search" placeholder="search">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" style="background-color: grey;">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+  <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
+
+
+    <div class="dropdown">
+      <i class="fa fa-user fa-2x" aria-hidden="true">
+      </i>
+      <div class="dropdown-content">
+        <a (click)="open(login)">Login</a>
+        <a (click)="open(register)">Register</a>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+<ng-template #login let-modal>
+    <app-loginform (isAdmin)="changeuser($event)"></app-loginform>
+</ng-template>
+<ng-template #register let-modal>
+    <app-registrationform ></app-registrationform>
+</ng-template>
+

@@ -1,0 +1,23 @@
+<table class="table">
+
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of categories">
+      <th scope="row">{{category.categories_id}}</th>
+      <td> <input type="text" [attr.disabled]="category.categories_id!=Id? true : null" class="form-control"
+          [(ngModel)]="category.category"></td>
+      <td>
+        <input type="button" [hidden]="category.categories_id==Id" (click)="editCategory(category.categories_id)" value="Edit">
+        <input type="button" [hidden]="category.categories_id!=Id" (click)="cancelEdit()" value="Cancel">
+        <input type="button" [hidden]="category.categories_id!=Id" (click)="updateCategory(category)" value="Update">
+      </td>
+      <td><input type="button" style="color: red;" (click)="removecategory(category.categories_id)" value="X"></td>
+    </tr>
+  </tbody>
+
+</table>

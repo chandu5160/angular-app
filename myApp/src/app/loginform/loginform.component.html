@@ -1,0 +1,37 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Login</h4>
+  <button type="button" class="close" aria-label="Close" (click)="close('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+
+    <div class="form-group" >
+      <label>Email</label>
+      <div class="input-group" >
+        <input id="email" type="email" class="form-control"  placeholder="email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && profileForm.controls.email.errors }">
+      </div>
+      <span *ngIf="submitted && profileForm.controls.email.errors" style="color: red;">
+          <span *ngIf="profileForm.controls.email.errors.required">Email is required</span>
+          <div *ngIf="profileForm.controls.email.errors.email">Email must be a valid email address</div>
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <div class="input-group">
+        <input id="password" type="password" class="form-control" placeholder="password" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && profileForm.controls.password.errors}">
+      </div>
+      <span *ngIf="submitted && profileForm.controls.password.errors" style="color: red;">
+          <span *ngIf="profileForm.controls.password.errors.required">Password is required</span>
+      </span>
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-outline-success" >Login</button><br>
+  </div>
+</form>

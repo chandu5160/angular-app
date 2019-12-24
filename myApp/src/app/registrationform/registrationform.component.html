@@ -1,0 +1,62 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Registration </h4>
+  <button type="button" class="close" aria-label="Close" (click)="close('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+
+  <div class="form-group">
+    <label>User name <span style="color: red;">*</span></label>
+    <div class="input-group">
+      <input id="username" type="text" class="form-control" placeholder="user name" [(ngModel)]="name"
+        [ngClass]="{ 'is-invalid': flag &&  validations.nameValidation(name)!=' ' }">
+
+    </div>
+    <span *ngIf="flag" style="color: red;">{{validations.nameValidation(name)}}</span>
+  </div>
+  <div class="form-group">
+    <label>Email <span style="color: red;">*</span></label>
+    <div class="input-group">
+      <input id="email" type="email" class="form-control" placeholder="Email" [(ngModel)]="email"
+        [ngClass]="{ 'is-invalid': flag && validations.emailValidation(email)!=' ' }">
+    </div>
+    <span *ngIf="flag" style="color: red;">{{validations.emailValidation(email)}}</span>
+  </div>
+  <div class="form-group">
+    <label>Gender <span style="color: red;">*</span> </label><br>
+    <label class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" [(ngModel)]="gender" value="male"
+        [ngClass]="{ 'is-invalid': flag &&  validations.genderValidation(gender)!=' ' }">
+      <span class="form-check-label"> Male </span>
+    </label>
+    <label class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" [(ngModel)]="gender" value="female"
+        [ngClass]="{ 'is-invalid': flag &&  validations.genderValidation(gender)!=' ' }">
+      <span class="form-check-label"> Female</span>
+    </label><br>
+    <span *ngIf="flag" style="color: red;">{{validations.genderValidation(gender)}}</span>
+  </div>
+  <div class="form-group">
+    <label>Password <span style="color: red;">*</span></label>
+    <div class="input-group">
+      <input id="password" type="password" class="form-control" placeholder="password" [(ngModel)]="password"
+        [ngClass]="{ 'is-invalid': flag &&  validations.passwordValidation(password)!=' ' }">
+    </div>
+    <span *ngIf="flag" style="color: red;">{{validations.passwordValidation(password)}}</span>
+  </div>
+  <div class="form-group">
+    <label>Confirm Password <span style="color: red;">*</span></label>
+    <div class="input-group">
+      <input id="password1" type="password" class="form-control" placeholder="confirm password" [(ngModel)]="password1"
+        [ngClass]="{ 'is-invalid': flag && validations.passwordConfirmation(password,password1)!=' ' }">
+    </div>
+    <span *ngIf="flag" style="color: red;">{{validations.passwordConfirmation(password,password1)}}</span>
+  </div>
+
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-success" (click)="register()">SignUp</button>
+</div>
