@@ -1,0 +1,26 @@
+CREATE TABLE categories(
+                        categories_id INT AUTO_INCREMENT PRIMARY KEY,
+                        category VARCHAR(100) NOT NULL
+                     );
+drop table  categories;               
+                     
+CREATE TABLE brands(
+                        brand_id INT AUTO_INCREMENT PRIMARY KEY,
+                        brand VARCHAR(100) NOT NULL,
+                        categories_id INT,
+        FOREIGN KEY (categories_id) REFERENCES  categories(categories_id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+                     );
+drop table brands;
+
+CREATE TABLE products(
+                        prduct_id INT AUTO_INCREMENT PRIMARY KEY,
+                        product VARCHAR(100) NOT NULL,
+                        quantity INT NOT NULL,
+                        brand_id INT,
+        FOREIGN KEY (brand_id) REFERENCES  brands(brand_id) 
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+                     );
+drop table products;
